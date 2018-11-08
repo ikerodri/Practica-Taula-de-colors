@@ -1,0 +1,138 @@
+var colum = 0;
+var files = 0;
+
+function generartabla(){
+     colum = document.getElementById("llargada").value;
+     files = document.getElementById("profunditat").value;
+    
+    //Faig un array on afegeixo colors per luego pintar les celes.
+    
+    var colors = ["vermell","taronja"]
+    if (document.getElementById("groc").checked == true){
+        colors.push("groc")
+    }
+    if (document.getElementById("verd").checked == true){
+        colors.push("verd")
+    }
+    if (document.getElementById("marro").checked == true){
+        colors.push("marro")
+    }
+    if (document.getElementById("lila").checked == true){
+        colors.push("lila")
+    }
+    
+    //Creo la taula
+    
+    var tabla = document.createElement("table")
+    tabla.setAttribute("style", "border-collapse: collapse; margin-top: 20px");
+    tabla.setAttribute("id","table");
+    var tblbody = document.createElement("tbody");
+    
+    //Creo les columnes de la taula
+    var contador =0;
+    for (var i = 0; i < colum; i++){
+    var filera = document.createElement("tr");
+        filera.setAttribute("ondblclick","borrarcolumna()");
+        
+        //Creo les fileres de les taules
+        
+        for (var j = 0; j < files; j++){
+            
+            var cela = document.createElement("td");
+            
+            if(colors[contador]=="vermell"){
+            cela.setAttribute("style", "border: 1px solid black; width: 10px; height: 10px; background-color: red");
+            cela.setAttribute("onclick", "detallcolor(this)");
+            cela.setAttribute("ondblclick", "");
+            filera.appendChild(cela);   
+            }
+            
+            
+            if(colors[contador]=="taronja"){
+            cela.setAttribute("style", "border: 1px solid black; width: 10px; height: 10px; background-color: orange");
+            cela.setAttribute("onclick", "detallcolor(this)");
+            filera.appendChild(cela);   
+            }
+            
+            
+            if(colors[contador]=="groc"){
+             cela.setAttribute("style", "border: 1px solid black; width: 10px; height: 10px; background-color: yellow");
+            cela.setAttribute("onclick", "detallcolor(this)");
+            filera.appendChild(cela);   
+            }
+            if(colors[contador]=="verd"){
+             cela.setAttribute("style", "border: 1px solid black; width: 10px; height: 10px; background-color: green");
+            cela.setAttribute("onclick", "detallcolor(this)");
+            filera.appendChild(cela);   
+            }
+            if(colors[contador]=="marro"){
+             cela.setAttribute("style", "border: 1px solid black; width: 10px; height: 10px; background-color: brown");
+            cela.setAttribute("onclick", "detallcolor(this)");
+            filera.appendChild(cela);   
+            }
+            if(colors[contador]=="lila"){
+             cela.setAttribute("style", "border: 1px solid black; width: 10px; height: 10px; background-color: purple");
+            cela.setAttribute("onclick", "detallcolor(this)");
+            filera.appendChild(cela);   
+            }
+            if(contador<colors.length){
+                contador++;
+            }
+            if(contador==colors.length){
+                contador=0;
+            }
+        }
+        
+        tblbody.appendChild(filera);
+    }
+    tabla.appendChild(tblbody);
+    document.body.appendChild(tabla);
+}
+
+function detallcolor(color){
+    if(color.style.backgroundColor=="red"){
+        var color= document.createElement("p")
+        var textcolor= document.createTextNode("RGB: (255,0,0), Hex: #FF0000")
+        color.appendChild(textcolor)
+        document.body.appendChild(color)
+    }  
+    if(color.style.backgroundColor=="orange"){
+        var color= document.createElement("p")
+        var textcolor= document.createTextNode("RGB: (255,165,0), Hex: #FFA500")
+        color.appendChild(textcolor)
+        document.body.appendChild(color)
+    }
+    if(color.style.backgroundColor=="yellow"){
+        var color= document.createElement("p")
+        var textcolor= document.createTextNode("RGB: (255,165,0), Hex: #FFA500")
+        color.appendChild(textcolor)
+        document.body.appendChild(color)
+    }
+    if(color.style.backgroundColor=="green"){
+        var color= document.createElement("p")
+        var textcolor= document.createTextNode("RGB: (0,128,0), Hex: #008000")
+        color.appendChild(textcolor)
+        document.body.appendChild(color)
+    }if(color.style.backgroundColor=="brown"){
+        var color= document.createElement("p")
+        var textcolor= document.createTextNode("RGB: (139,69,19), Hex: #8B4513")
+        color.appendChild(textcolor)
+        document.body.appendChild(color)
+    }
+    if(color.style.backgroundColor=="purple"){
+        var color= document.createElement("p")
+        var textcolor= document.createTextNode("RGB: (128,0,128), Hex: #800080")
+        color.appendChild(textcolor)
+        document.body.appendChild(color)
+    }
+}
+function borrarcolumna(){
+    colum = document.getElementById("llargada").value;
+    files = document.getElementById("profunditat").value;
+    files--;
+    
+}
+function borrarfila(r){
+       var i = r.parentNode.parentNode.rowIndex;
+       document.getElementById("table").deleteRow(i);
+}
