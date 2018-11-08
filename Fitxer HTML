@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <body>
+    </body>
+    <script type="text/javascript" src="Activitat%201.js">
+    </script>
+     <form>
+            <h1>Tria una combinació de colors:</h1>
+            <input type="checkbox" checked id="vermell"/> Vermell
+            <br>
+            <input type="checkbox" checked id="taronja"/> Taronja
+            <br>
+            <input type="checkbox" id="groc"/> Groc
+            <br>
+            <input type="checkbox" id="verd"/> Verd
+            <br>
+            <input type="checkbox" id="marro"/> Marró
+            <br>
+            <input type="checkbox" id="lila"/> Lila
+            <br>
+            <br>
+            <h1>Tria la mida de la taula</h1>
+            <input type="text" style="width:50px;height:15px" id="llargada" max="25"/> x
+            <input type="text" style="width:50px;height:15px" id="profunditat" max="25"/>
+            <br>
+            <br>
+            <input type="button" value="Dibuixa la taula" style="width:125px;height:25px" id="boto" onclick="generartabla()"/>
+        </form>
+</html>
